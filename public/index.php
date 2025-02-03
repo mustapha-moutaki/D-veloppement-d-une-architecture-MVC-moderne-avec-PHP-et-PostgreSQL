@@ -14,5 +14,4 @@ if ($pdo) {
     echo "not connected";
 }
 
-
 ?>

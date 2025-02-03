@@ -3,7 +3,6 @@
 namespace App\Core;
 use PDO;
 use PDOException;
-
 class Database{
     private static $instance = null;
     private $connection;
@@ -11,8 +10,7 @@ class Database{
     // Using connection directly and avoid making instances
     private function __construct()
     {
-        try {
-           
+        try { 
             $host = 'localhost';
             $port = '5432'; 
             $dbname = 'mvclearning_db';
