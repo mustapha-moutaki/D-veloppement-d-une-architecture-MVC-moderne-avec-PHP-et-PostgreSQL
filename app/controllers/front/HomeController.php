@@ -3,11 +3,10 @@ namespace App\controllers\front;
 
 use App\core\Controller;
 
-class HomeController extends Controller
-{
+class HomeController extends Controller{
     public function index()
     {
-        echo "Welcome to Home Page!";
+        echo "Home Page";
     }
 }
 ?>

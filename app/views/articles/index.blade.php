@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Articles</title>
-</head>
-<style>
+    
+    <style>
     body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -18,7 +18,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-.button {
+.button{
     display: inline-block;
     padding: 10px 20px;
     background-color: #007bff;
@@ -70,6 +70,8 @@ p {
 }
 
 </style>
+</head>
+
 <body>
     <h1>Articles</h1>
 
@@ -88,6 +90,7 @@ p {
         <p>No articles available.</p>
     @endif
 </ul>
+
 
 
     <!-- <ul>

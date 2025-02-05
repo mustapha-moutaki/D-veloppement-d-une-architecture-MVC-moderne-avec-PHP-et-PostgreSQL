@@ -29,10 +29,6 @@ class Article {
             return [];
         }
     }
-    
-    
-    
-
 
     public function getArticle($id) {
         try {
@@ -48,8 +44,8 @@ class Article {
     public function createArticle($data) {
         try {
             $stmt = $this->db->prepare("
-                INSERT INTO public.articles (title, content, user_id) 
-                VALUES (:title, :content, :user_id)
+                INSERT INTO articles (title, content) 
+                VALUES (:title, :content)
             ");
             return $stmt->execute($data);
         } catch (\PDOException $e) {

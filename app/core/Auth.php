@@ -2,7 +2,7 @@
 namespace App\Core;
 
 class Auth {
-    public function login($username, $password) {
+    public function login($username, $email,$password) {
         $_SESSION['user'] = $username;
     }
 
