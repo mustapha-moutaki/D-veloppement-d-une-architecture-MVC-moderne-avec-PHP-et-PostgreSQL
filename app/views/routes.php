@@ -1,7 +1,8 @@
 <?php
 
 use App\Core\Router;
-use App\Controller\ArticleController;
+use App\controllers\front\ArticleController;
+use App\controllers\front\HomeController;
 
 $router = new Router();
 

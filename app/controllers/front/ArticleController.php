@@ -1,6 +1,6 @@
 <?php
-namespace App\Controller;
-
+// namespace App\Controller;
+namespace App\controllers\front;
 use App\Models\Article;
 use App\Core\Database;
 use App\Core\Controller;
@@ -20,7 +20,7 @@ class ArticleController extends Controller {
         $articles = $this->articleModel->getAllArticles();
         $this->render('articles/index', ['articles' => $articles]);
     }
-
+    
     public function show($id) {
         $article = $this->articleModel->getArticle($id);
         if (!$article) {

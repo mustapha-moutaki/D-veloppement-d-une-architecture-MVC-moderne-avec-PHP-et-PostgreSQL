@@ -8,10 +8,8 @@ class Article {
     
     public function __construct() {
         try {
-            $this->db = Database::getInstance();
-
-            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (\PDOException $e) {
+            $this->db = Database::getInstance(); // الآن هذا سيكون كائن PDO
+        } catch (\Exception $e) {
             error_log("Database connection failed: " . $e->getMessage());
             throw new \Exception("Database connection failed");
         }

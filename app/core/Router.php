@@ -2,8 +2,7 @@
 
 namespace App\Core;
 
-class Router
-{
+class Router{
     protected $routes = [];
 
     public function add($method, $route, $controller, $action)
@@ -14,7 +13,7 @@ class Router
     public function dispatch()
     {
         $uri = strtok($_SERVER['REQUEST_URI'], '?');
-        $method = $_SERVER['REQUEST_METHOD'];
+        $method = $_SERVER['REQUEST_METHOD'];//get or post
         $key = "$method $uri";
 
         if (array_key_exists($key, $this->routes)) {
