@@ -1,26 +1,14 @@
 <?php
 
-namespace App\core;
+namespace App\Core;
 
-use App\core\Controller;
-
-class Router extends Controller
+class Router
 {
     protected $routes = [];
 
-    private function addRoute($route, $controller, $action, $method)
+    public function add($method, $route, $controller, $action)
     {
-        $this->routes["$method $route"] = ['controller' => $controller, 'action' => $action];  
-    }
-
-    public function get($route, $controller, $action)
-    {
-        $this->addRoute($route, $controller, $action, "GET");
-    }
-
-    public function post($route, $controller, $action)
-    {
-        $this->addRoute($route, $controller, $action, "POST");
+        $this->routes["$method $route"] = ['controller' => $controller, 'action' => $action];
     }
 
     public function dispatch()
@@ -36,7 +24,8 @@ class Router extends Controller
             $controller = new $controller();
             $controller->$action();
         } else {
-            $this->render('404');
+            http_response_code(404);
+            require __DIR__ . '/../views/front/404.php';
         }
     }
 }

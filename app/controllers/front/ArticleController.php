@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+
 use App\Models\Article;
 use App\Core\Database;
 use App\Core\Controller;
@@ -16,13 +17,9 @@ class ArticleController extends Controller {
     }
 
     public function index() {
-        $articles = Article::getAll();
-    
-    
-        // $view = new \App\Core\View(); 
+        $articles = $this->articleModel->getAllArticles();
         $this->render('articles/index', ['articles' => $articles]);
     }
-    
 
     public function show($id) {
         $article = $this->articleModel->getArticle($id);
@@ -32,8 +29,6 @@ class ArticleController extends Controller {
             return;
         }
         $this->render('articles/show', ['article' => $article]);
-
-        // require '../app/views/articles/show.php';
     }
 
     public function create() {
@@ -44,7 +39,6 @@ class ArticleController extends Controller {
                 'user_id' => $_POST['user_id']
             ];
 
-            
             $db = Database::getInstance();
             $stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE id = :user_id");
             $stmt->execute(['user_id' => $data['user_id']]);
@@ -57,10 +51,11 @@ class ArticleController extends Controller {
 
             if ($this->articleModel->createArticle($data)) {
                 header('Location: /articles');
+                exit;
             } else {
                 echo "Failed to create article.";
             }
         }
-        require_once '../app/views/front/articles/addArticle.php';
+        $this->render('articles/addArticle');
     }
 }
