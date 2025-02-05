@@ -1,11 +1,11 @@
 <?php
 namespace App\core;
 
-
 class Controller {
-    public function render($view,$data=[]){
+    protected function render($view, $data = []) {
+        // Extract the data to be available in the view
         extract($data);
-        require __DIR__. "/../views/$view.blade.php";
 
+        include_once "../app/views/articles/{$view}.blade.php"; // 
     }
 }
