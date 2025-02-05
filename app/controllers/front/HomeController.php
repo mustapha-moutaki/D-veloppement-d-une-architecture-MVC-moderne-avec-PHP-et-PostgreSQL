@@ -1,12 +1,13 @@
 <?php
-namespace App\Controllers\front;
+namespace App\controllers\front;
 
-use App\Core\View;
+use App\core\Controller;
 
-class HomeController {
-    public function index() {
-        $name = "mustapha";
-        $view = new View();
-        $view->render('home', ['name' => $name]);
+class HomeController extends Controller
+{
+    public function index()
+    {
+        echo "Welcome to Home Page!";
     }
 }
+?>

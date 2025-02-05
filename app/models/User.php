@@ -1,17 +1,21 @@
 <?php
+
 namespace App\Models;
 
-use App\Core\Model;
+use Core\Database;
 
-class User extends Model {
-    public function getUserById($id) {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE id = ?");
-        $stmt->execute([$id]);
+class User {
+    private $db;
+
+    public function __construct() {
+        $this->db = Database::getInstance();
+    }
+
+    public function getUser ($id) {
+        $stmt = $this->db->prepare("SELECT * FROM public.\"user\" WHERE id = :id");
+        $stmt->execute(['id' => $id]);
         return $stmt->fetch();
     }
 
-    public function createUser($data) {
-        $stmt = $this->db->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-        $stmt->execute([$data['username'], password_hash($data['password'], PASSWORD_DEFAULT)]);
-    }
+ 
 }

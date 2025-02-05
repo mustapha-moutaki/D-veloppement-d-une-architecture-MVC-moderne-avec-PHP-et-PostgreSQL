@@ -1,20 +1,15 @@
 <?php
-require_once '../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-// use App\classes\Home;
-use App\Core\Database;
-use App\Controllers\front\HomeController;//for blade
-$database = Database::getInstance();
 
-$pdo = $database->getConnection();
+require_once __DIR__ . '/../app/views/routes.php';
+// use App\core\Router;
+// use App\controllers\articleController;
 
-if ($pdo) {
-    echo "--------connected successfully---------";
-} else {
-    echo "not connected";
-}
+// $router = new Router();
 
-$controller = new HomeController();
-$controller->index();
+// $router->get('/', articleController::class, 'home');
 
-?>
+// $router->get('/article', articleController::class, 'article');
+
+// $router->dispatch();

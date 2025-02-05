@@ -22,3 +22,16 @@ CREATE TABLE articles (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+
+-- First, insert some users to reference in the articles table
+INSERT INTO users (id, username, email, password) VALUES
+(1, 'John Doe', 'john@example.com',1234),
+(2, 'Jane Smith', 'jane@example.com',121);
+
+-- Insert articles with references to existing users
+INSERT INTO articles (title, content, user_id) VALUES
+('Introduction to MVC', 'This article explains the MVC architecture in web development.', 1),
+('Understanding PostgreSQL', 'A guide on how to use PostgreSQL efficiently.', 2),
+('Blade Templating in Laravel', 'This article covers the basics of Blade templating engine in Laravel.', 1),
+('PHP OOP Concepts', 'Learn the fundamental Object-Oriented Programming concepts in PHP.', 2);
